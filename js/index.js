@@ -12,12 +12,12 @@ let arrayOfWords = [{ word: 'limousine', definition: 'big car' },
 { word: 'alias', definition: 'Ay-lee-iss' }
 ]
 
-let singleWord = function getWord() {
-    return arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)]
-}
-
-
 function generateWord() {
+    //had singleWord variable outside of generate word function 
+    //but put it inside not sure if that's the best way of doing things
+    let singleWord = function getWord() {
+        return arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)]
+    }
     keem = singleWord()
     var utterThis = new SpeechSynthesisUtterance(keem.word);
     synth.speak(utterThis);
@@ -33,7 +33,10 @@ function generateWord() {
     buttonToHide.style.display = "inline"
     let paragraphToUpdate = document.getElementById("properSpelling")
     paragraphToUpdate.textContent = ""
+    let inputToHide = document.getElementById("input")
+    inputToHide.style.display = "inline"
 }
+generateWord()
 
 function hearWord() {
     var utterThis = new SpeechSynthesisUtterance(keem.word);
@@ -75,7 +78,7 @@ function check() {
 }
 
 function checkOnEnterKeyPress(event) {
-    if (event.keyCode === 13) {
+    if (event.key === "Enter") {
         check()
     }
     //detect if the enter key is pressed
