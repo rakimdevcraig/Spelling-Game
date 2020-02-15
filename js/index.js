@@ -20,7 +20,9 @@ let arrayOfWords = [{ word: 'limousine', definition: 'big car' },
 { word: 'february', definition: 'second month' },
 { word: 'nicky', definition: 'name' },
 { word: 'newspaper', definition: 'fourth month' },
-{ word: 'array', definition: 'list of things' }]
+{ word: 'array', definition: 'list of things' },
+{ word: 'alias', definition: 'Ay-lee-iss' }
+]
 
 let singleWord = function getWord() {
     return arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)]
@@ -60,9 +62,7 @@ function hearDef() {
 function check() {
     let input = document.getElementById('input').value
     if (input === keem.word) {
-        console.log('you spelled the word correctly')
         score++
-        console.log(`score is ${score}`)
         document.getElementById('score').innerHTML = score
         guessIsCorrect()
         clearInput()
@@ -70,12 +70,18 @@ function check() {
         if (score > 0) {
             score--
         }
-        console.log(`score is ${score}`)
-        console.log('you spelled the word wrong')
         document.getElementById('score').innerHTML = score
         clearInput()
         guessIsWrong()
     }
+}
+
+function checkOnEnterKeyPress(event) {
+    if (event.keyCode === 13) {
+        check()
+    }
+    //detect if the enter key is pressed
+    //run the check function if enter key is pressed
 }
 
 function clearInput() {
@@ -93,9 +99,11 @@ function guessIsWrong() {
 
 function guessIsCorrect() {
     let paragraphToInsert = document.getElementById("properSpelling")
-    paragraphToInsert.textContent = `Correct!`
+    paragraphToInsert.textContent = `Correct! Please generate a new word.`
     let buttonToHide = document.getElementById("submit")
     buttonToHide.style.display = "none"
+    let inputToHide = document.getElementById("input")
+    inputToHide.style.display = "none"
 }
 
 function properSpelling() {

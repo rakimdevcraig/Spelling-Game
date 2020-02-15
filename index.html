@@ -17,7 +17,7 @@
         <button onClick="hearWord()" id="buttonOne">Click to hear the word</button>
         <button onClick="hearDef()" id="buttonTwo">Click to hear the defintion of the word</button>
         <button onClick="properSpelling()" id="buttonThree">Click to get proper spelling</button>
-        <input type="text" id="input">
+        <input type="text" id="input" onkeypress="checkOnEnterKeyPress(event)">
         <button onClick="check()" id="submit">submit your answer</button>
     </div>
     <div id="properSpelling">
