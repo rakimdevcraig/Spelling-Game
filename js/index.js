@@ -1,7 +1,6 @@
 let keem; // this variable is global so other functions can see it instead of just generateWord
 var synth = window.speechSynthesis;
 let score = 0
-
 let arrayOfWords = [{ word: 'limousine', definition: 'big car' },
 { word: 'number', definition: 'numerical' },
 { word: 'january', definition: 'first month' },
@@ -11,6 +10,8 @@ let arrayOfWords = [{ word: 'limousine', definition: 'big car' },
 { word: 'array', definition: 'list of things' },
 { word: 'alias', definition: 'Ay-lee-iss' }
 ]
+
+document.addEventListener("DOMContentLoaded", generateWord());
 
 function generateWord() {
     //had singleWord variable outside of generate word function 
@@ -36,7 +37,6 @@ function generateWord() {
     let inputToHide = document.getElementById("input")
     inputToHide.style.display = "inline"
 }
-generateWord()
 
 function hearWord() {
     var utterThis = new SpeechSynthesisUtterance(keem.word);
