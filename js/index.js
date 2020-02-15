@@ -1,18 +1,6 @@
-
-//Problem: I was calling the function to generate a random word and a random definition
-//so I got a different word from defintion so instead I called the function to generate
-//a random object and stored that as a variable then I called the word value of that object 
-//and i called the definition value of that object
-
-
-
-//is there a way to update the score without using innerhtml
-
+let keem; // this variable is global so other functions can see it instead of just generateWord
 var synth = window.speechSynthesis;
 let score = 0
-document.getElementById('score').innerHTML = `Score: ${score}`
-// let scoreText = document.createTextNode(score)
-// document.getElementById('score').appendChild(scoreText)
 
 let arrayOfWords = [{ word: 'limousine', definition: 'big car' },
 { word: 'number', definition: 'numerical' },
@@ -28,7 +16,6 @@ let singleWord = function getWord() {
     return arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)]
 }
 
-let keem; // this variable is global so other functions can see it instead of just generateWord
 
 function generateWord() {
     keem = singleWord()
@@ -58,19 +45,30 @@ function hearDef() {
     synth.speak(utterThis);
 }
 
+function properSpelling() {
+    //should I create a p element and then add text content and then add that p to the empty p?
+    //or stay the way that I have it
+    //make it hidden to start off and if guess is wrong then make it appear and make the button to 
+    //submit answer disappear so users cannot cheat
+    let paragraphToInsert = document.getElementById("properSpelling")
+    paragraphToInsert.textContent = `the correct spelling is "${keem.word}" please click the "generate a word" button for your next word`
+    let buttonToHide = document.getElementById("submit")
+    buttonToHide.style.display = "none"
+}
 
 function check() {
     let input = document.getElementById('input').value
     if (input === keem.word) {
         score++
         document.getElementById('score').innerHTML = score
+        updateScore()
         guessIsCorrect()
         clearInput()
     } else {
         if (score > 0) {
             score--
         }
-        document.getElementById('score').innerHTML = score
+        updateScore()
         clearInput()
         guessIsWrong()
     }
@@ -106,15 +104,10 @@ function guessIsCorrect() {
     inputToHide.style.display = "none"
 }
 
-function properSpelling() {
-    //should I create a p element and then add text content and then add that p to the empty p?
-    //or stay the way that I have it
-    //make it hidden to start off and if guess is wrong then make it appear and make the button to 
-    //submit answer dissappear so users cannot cheat
-    let paragraphToInsert = document.getElementById("properSpelling")
-    paragraphToInsert.textContent = `the correct spelling is "${keem.word}" please click the "generate a word" button for your next word`
-    let buttonToHide = document.getElementById("submit")
-    buttonToHide.style.display = "none"
+function updateScore() {
+    document.getElementById('score').innerHTML = `Score: ${score}`
+    //is there a way to update the score without using innerhtml
+    // let scoreText = document.createTextNode(score)
+    // document.getElementById('score').appendChild(scoreText)
 }
-
 
