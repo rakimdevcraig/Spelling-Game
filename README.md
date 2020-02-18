@@ -6,6 +6,10 @@ so I got a different word from defintion so instead I called the function to gen
 a random object and stored that as a variable then I called the word value of that object 
 and i called the definition value of that object
 
+the API that I use to generate a word won't fire on page load because it's no longer allowed to work without user activation 
+so I have to prompt the user to click the button to hear the word
+
+when adding word to database: add word, definition, difficulty of word
 
 future features:
 add the ability to hear words phonetically
