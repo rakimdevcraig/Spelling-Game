@@ -9,8 +9,14 @@ and i called the definition value of that object
 the API that I use to generate a word won't fire on page load because it's no longer allowed to work without user activation 
 so I have to prompt the user to click the button to hear the word
 
-when adding word to database: add word, definition, difficulty of word
-
 future features:
 add the ability to hear words phonetically
 so far I havent been able to find any API's that pronounce words phonetically so the only solution in my head is to actually pronounce all of the words myself phonetically and when I add a new word i'll have to add the ability to record myself or someone else pronouncing the word phonetically
+
+To do:
+add words to database:
+when adding word to database: add word, definition, difficulty of word
+
+be able to fetch words from database, then work on fetching them randomly
+
+After that work on login
